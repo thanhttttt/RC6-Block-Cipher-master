@@ -1,0 +1,1 @@
+In August 2016, code reputed to be Equation Group or NSA "implants" for various network security devices was disclosed.[2] The accompanying instructions revealed that some of these programs use RC6 for confidentiality of network communications.[3]         
