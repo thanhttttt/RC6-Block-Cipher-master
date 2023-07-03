@@ -6,7 +6,7 @@ lgw = int(math.log(w, 2))
 modulo = 2**w
 sz = (lgw-1)*4
 def F(x):
-    return x**2+x
+    return 2*x**2+x
 #rotate right input x, by n bits
 def ROR(x, n, bits = w):
     mask = (2**n) - 1
