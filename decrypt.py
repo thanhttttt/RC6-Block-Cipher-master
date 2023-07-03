@@ -47,6 +47,9 @@ def main():
     print ("UserKey: "+key )
     s = generateKey(key)
     plain_text = ""
+    with open("decrypted_demo.txt", mode = 'w', encoding ='utf-8') as fi:
+        pass
+    f1 = open("decrypted_demo.txt", mode = 'a', encoding ='utf-8')
     with open("encrypted.txt","rb") as f:
         if not f:
             print ("Encrypted input not found in encrypted.txt")
@@ -58,16 +61,17 @@ def main():
             for esentence in lsentence:
                 cipher,orgi = decrypt(esentence,s)
                 sentence = deBlocker(orgi)
-                print ("\nEncrypted String list: ",cipher)
-                print ("Encrypted String: " + esentence)
-                print ("Length of Encrypted String: ",len(esentence))
+                print ("\nEncrypted String list: ",cipher, file=f1)
+                print ("Encrypted String: " + esentence, file = f1)
+                print ("Length of Encrypted String: ",len(esentence), file=f1)
 
-                print ("\nDecrypted String list: ",orgi)
-                print ("Decrypted String: " + sentence )
-                print ("Length of Decrypted String: ",len(sentence))
+                print ("\nDecrypted String list: ",orgi, file = f1)
+                print ("Decrypted String: " + sentence, file = f1 )
+                print ("Length of Decrypted String: ",len(sentence), file = f1)
                 plain_text += sentence
     with open('plained.txt', 'w', encoding='utf-8') as f:
         f.write(plain_text)
+    print ("Decryption: ",plain_text, file = f1)
     print('Decrypted')
 if __name__ == "__main__":
     main()

@@ -42,7 +42,9 @@ def encrypt(sentence,s):
 def main():
     print ("ENCRYPTION: ")
     #key='A WORD IS A WORD'
-    key = input("Enter Key(0-16 characters): ")
+    # with open ("origin.txt", "r") as fr:
+    #     key = fr.read()
+    key =  input("Enter Key(0-16 characters): ")
     if len(key) <b:
         key = key + " "*(b-len(key))
     key = key[:b]
@@ -63,19 +65,23 @@ def main():
     # print(sz, len(rsentence), ftt, rmr)
     lsentence = [rsentence[chunk: chunk+sz] for chunk in range(0,len(rsentence),sz)]
     # print(lsentence)
+    with open("encrypted_demo.txt", mode = 'w', encoding ='utf-8') as fi:
+        pass
+    f1 = open("encrypted_demo.txt", mode = 'a', encoding ='utf-8')
+
     for sentence in lsentence:
         orgi,cipher = encrypt(sentence,s)
         esentence = deBlocker(cipher)
-        print ("\nInput String: "+sentence )
-        print ("Original String list: ",orgi)
-        print ("Length of Input String: ",len(sentence))
-        print ("\nEncrypted String list: ",cipher)
-        print ("Encrypted String: " + esentence)
-        print ("Length of Encrypted String: ",len(esentence))
+        print ("\nInput String: "+sentence, file = f1)
+        print ("Original String list: ",orgi, file = f1)
+        print ("Length of Input String: ",len(sentence), file= f1)
+        print ("\nEncrypted String list: ",cipher, file= f1)
+        print ("Encrypted String: " + esentence, file= f1)
+        print ("Length of Encrypted String: ",len(esentence), file= f1)
         with open("encrypted.txt", mode = 'ab') as f:
             f.write(str.encode(esentence, encoding='utf-8'))
         cipher_text += esentence
-    print(cipher_text)
+    print('\nEncryption: ',cipher_text, file = f1)
     print('Encrypted')
 if __name__ == "__main__":
 
